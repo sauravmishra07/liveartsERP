@@ -13,9 +13,12 @@
   # build dies with `nest: not found`. A plain root install covers every workspace
   # (npm does that by default) and hoists the backend deps into ./node_modules, where
   # the function bundler resolves external_node_modules.
+  # `--include=dev` is required: NODE_ENV=production is set for the function runtime,
+  # and npm honours it during install by REMOVING devDependencies — which is exactly
+  # where typescript and @nestjs/cli live. Without it the build fails `tsc: not found`.
   # Do NOT add --workspaces --include-workspace-root here: that combination prunes
   # transitive dependencies (tslib disappears and @nestjs/core fails to load).
-  command = "npm install && npm run build"
+  command = "npm install --include=dev && npm run build"
   publish = "web/dist"
   functions = "netlify/functions"
 
