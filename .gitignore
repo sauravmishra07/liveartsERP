@@ -12,6 +12,11 @@ node_modules/
 # netlify
 .netlify/
 
+# Deprecated Expo app kept only as a local archive. It carries its own .git, so
+# committing it made Git record a submodule pointer with no .gitmodules entry —
+# which breaks `git clone` on CI (Netlify "No url found for submodule path").
+frontend/
+
 # builds
 dist/
 build/
