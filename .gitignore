@@ -1,0 +1,28 @@
+# deps
+node_modules/
+**/node_modules/
+
+# env — never commit real secrets
+.env
+.env.*
+!.env.example
+# Safe to commit: no secrets, just the same-origin API path for production builds.
+!.env.production
+
+# netlify
+.netlify/
+
+# builds
+dist/
+build/
+**/dist/
+web-build/
+
+# expo
+.expo/
+.expo-shared/
+
+# logs / os
+*.log
+.DS_Store
+coverage/

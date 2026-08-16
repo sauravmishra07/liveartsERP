@@ -1,0 +1,27 @@
+# Local infra for Live Arts ERP dev.
+# Redis is required for BullMQ jobs + refresh-token store.
+# MongoDB Atlas is used via MONGO_URI; uncomment the mongo service to run locally instead.
+# No credentials live in this file — configure them via backend/.env.
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: live-arts-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  # mongo:
+  #   image: mongo:7
+  #   container_name: live-arts-mongo
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   restart: unless-stopped
+
+volumes:
+  redis-data:
+  # mongo-data:

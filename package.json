@@ -1,0 +1,26 @@
+{
+  "name": "live-arts-erp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live Arts ERP — NestJS API + React web, deployed together on Netlify",
+  "//": "npm workspaces so backend deps hoist to the root node_modules — the Netlify function bundler resolves `external_node_modules` from there.",
+  "workspaces": [
+    "backend",
+    "web"
+  ],
+  "scripts": {
+    "build:backend": "npm run build --workspace backend",
+    "build:web": "npm run build --workspace web",
+    "build": "npm run build:backend && npm run build:web",
+    "dev:backend": "npm run start:dev --workspace backend",
+    "dev:web": "npm run dev --workspace web",
+    "test": "npm test --workspace backend",
+    "seed": "npm run seed --workspace backend"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.8.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

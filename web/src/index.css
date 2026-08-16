@@ -1,0 +1,301 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/**
+ * Live Arts ERP design system — Star Admin 2 Pro palette.
+ *
+ * Core: accent #f29f67 (orange) · ink #1e1e2c (charcoal)
+ * Support: #3b8ff3 blue · #34b1aa teal · #e0b50f gold · #52527a purple
+ *
+ * Two accent values on purpose: #e0813f is the deepened tone used for text/borders
+ * (it passes contrast on the warm off-white), #f29f67 is the brighter fill used in
+ * charts and on the dark sidebar. Every semantic colour ships with a `-soft` tint
+ * used for pill/icon backgrounds.
+ *
+ * Type: Outfit for UI, Roboto Slab for headings and display figures.
+ */
+:root {
+  --radius: 0.875rem; /* 14px — reference card radius */
+
+  --background: #f6f4f1;
+  --foreground: #1e1e2c;
+  --card: #ffffff;
+  --card-foreground: #1e1e2c;
+  --popover: #ffffff;
+  --popover-foreground: #1e1e2c;
+
+  --primary: #e0813f;
+  --primary-foreground: #ffffff;
+
+  --secondary: #faf8f5;
+  --secondary-foreground: #1e1e2c;
+  --muted: #faf8f5;
+  --muted-foreground: #6f707f;
+  --faint: #a2a3b0;
+  --accent: #fdeee2;
+  --accent-foreground: #e0813f;
+
+  --destructive: #c02b3f;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fdebee;
+  --success: #279e97;
+  --success-foreground: #ffffff;
+  --success-soft: #e2f5f3;
+  --warning: #a8850a;
+  --warning-foreground: #ffffff;
+  --warning-soft: #faf3d6;
+  --info: #2f7fdb;
+  --info-foreground: #ffffff;
+  --info-soft: #e8f2fe;
+  --purple: #52527a;
+  --purple-soft: #ececf4;
+
+  --border: #eae6df;
+  --input: #eae6df;
+  --ring: #e0813f;
+
+  --chart-1: #f29f67;
+  --chart-2: #3b8ff3;
+  --chart-3: #34b1aa;
+  --chart-4: #e0b50f;
+  --chart-5: #52527a;
+  --chart-6: #1e1e2c; /* "ink" — flips light in dark theme */
+
+  --shadow-card: 0 1px 2px rgba(30, 30, 44, 0.04), 0 8px 24px -12px rgba(30, 30, 44, 0.14);
+
+  --sidebar: #1e1e2c;
+  --sidebar-foreground: #c6c7d4;
+  --sidebar-primary: #f29f67;
+  --sidebar-primary-foreground: #1e1e2c;
+  --sidebar-accent: rgba(255, 255, 255, 0.06);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #f29f67;
+}
+
+.dark {
+  --background: #15151f;
+  --foreground: #ecedf3;
+  --card: #1e1e2c;
+  --card-foreground: #ecedf3;
+  --popover: #1e1e2c;
+  --popover-foreground: #ecedf3;
+
+  --primary: #f29f67;
+  --primary-foreground: #1e1e2c;
+
+  --secondary: #1a1a26;
+  --secondary-foreground: #ecedf3;
+  --muted: #1a1a26;
+  --muted-foreground: #9c9eb0;
+  --faint: #6e7083;
+  --accent: #332417;
+  --accent-foreground: #f29f67;
+
+  --destructive: #ff7d90;
+  --destructive-foreground: #15151f;
+  --destructive-soft: #3a151d;
+  --success: #4cc8c1;
+  --success-foreground: #15151f;
+  --success-soft: #12312f;
+  --warning: #e0b50f;
+  --warning-foreground: #15151f;
+  --warning-soft: #332b0d;
+  --info: #5da9f6;
+  --info-foreground: #15151f;
+  --info-soft: #12293f;
+  --purple: #a9abc7;
+  --purple-soft: #272736;
+
+  --border: #2e2e40;
+  --input: #2e2e40;
+  --ring: #f29f67;
+
+  /* Lifted so strokes/fills stay legible against the dark canvas. */
+  --chart-1: #f29f67;
+  --chart-2: #5da9f6;
+  --chart-3: #4cc8c1;
+  --chart-4: #e0b50f;
+  --chart-5: #a9abc7;
+  --chart-6: #a9abc7;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+
+  --sidebar: #16161f;
+  --sidebar-foreground: #c6c7d4;
+  --sidebar-primary: #f29f67;
+  --sidebar-primary-foreground: #15151f;
+  --sidebar-accent: rgba(255, 255, 255, 0.06);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-ring: #f29f67;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-faint: var(--faint);
+  --color-purple: var(--purple);
+  --color-purple-soft: var(--purple-soft);
+  --color-success-soft: var(--success-soft);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-info-soft: var(--info-soft);
+
+  --font-sans: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Roboto Slab', Rockwell, Georgia, 'Times New Roman', serif;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Slim themed scrollbars — the default Windows bars look broken in an app shell. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--muted-foreground) 38%, transparent) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--muted-foreground) 38%, transparent);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--muted-foreground) 60%, transparent);
+  }
+}
+
+@layer components {
+  /* Roboto Slab for headings and display figures — Outfit stays on everything else. */
+  .font-display,
+  .kpi-val {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  /**
+   * KPI tile: corner glow + gradient top rule, tinted from `--glow`.
+   * Set the tone with .kpi-accent / -ok / -warn / -bad / -info / -purple.
+   */
+  .kpi {
+    position: relative;
+    overflow: hidden;
+    --glow: var(--primary);
+  }
+  .kpi-accent { --glow: var(--primary); }
+  .kpi-ok { --glow: var(--success); }
+  .kpi-warn { --glow: var(--warning); }
+  .kpi-bad { --glow: var(--destructive); }
+  .kpi-info { --glow: var(--info); }
+  .kpi-purple { --glow: var(--purple); }
+
+  .kpi::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto auto;
+    width: 130px;
+    height: 130px;
+    pointer-events: none;
+    background: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--glow) 14%, transparent), transparent 70%);
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 3px;
+    opacity: 0.75;
+    background: linear-gradient(90deg, var(--glow), transparent 65%);
+  }
+  .kpi:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--glow) 30%, var(--border));
+    box-shadow: 0 14px 34px -14px color-mix(in srgb, var(--glow) 35%, rgba(15, 23, 41, 0.25));
+  }
+  .kpi-ico {
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .kpi:hover .kpi-ico {
+    transform: scale(1.1) rotate(-4deg);
+  }
+
+  /* Status pill with a leading dot in the current colour. */
+  .pill-dot::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+
+  /* Gradient rail, matching the reference sidebar. */
+  .sidebar-gradient {
+    background: linear-gradient(180deg, #24242f 0%, #1e1e2c 55%, #191923 100%);
+  }
+  .dark .sidebar-gradient {
+    background: linear-gradient(180deg, #1c1c26 0%, #16161f 55%, #121219 100%);
+  }
+}
