@@ -7,6 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "//build:ci": "Same output as `nest build` (there are no assets to copy) but without needing the @nestjs/cli binary on PATH — CI installs can be scoped and drop it.",
+    "build:ci": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

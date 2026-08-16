@@ -8,9 +8,14 @@
 # (Site configuration → Environment variables) before the first deploy.
 
 [build]
-  # `npm install` at the root installs both workspaces and hoists their dependencies
-  # into ./node_modules, where the function bundler can find them.
-  command = "npm run build"
+  # The explicit `npm install` is deliberate. If the site was imported with a monorepo
+  # "package directory" of `web`, Netlify installs only that workspace and the backend
+  # build dies with `nest: not found`. A plain root install covers every workspace
+  # (npm does that by default) and hoists the backend deps into ./node_modules, where
+  # the function bundler resolves external_node_modules.
+  # Do NOT add --workspaces --include-workspace-root here: that combination prunes
+  # transitive dependencies (tslib disappears and @nestjs/core fails to load).
+  command = "npm install && npm run build"
   publish = "web/dist"
   functions = "netlify/functions"
 
